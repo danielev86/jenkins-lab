@@ -6,14 +6,15 @@ pipeline {
         sh 'ls -l'
       }
     }
-    stage('run'){
+    stage('build'){
       steps{
-        sh '/bin/bash script.sh'
+        sh 'docker build -t ubuntu-image-git .'
+        sh 'docker images'
       }
     }
-    stage('result'){
+    stage('run'){
       steps{
-        sh 'ls -l'
+        sh 'docker run -d --name cont-ubuntu ubuntu-image-git'
       }
     }
   }
