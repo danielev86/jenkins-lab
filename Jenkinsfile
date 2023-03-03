@@ -1,9 +1,19 @@
 pipeline {
   agent any
   stages{
-    stage('test'){
+    stage('check'){
       steps{
-        sh 'echo ciao'
+        sh 'ls -l'
+      }
+    }
+    stage('run'){
+      steps{
+        sh '/bin/bash script.sh'
+      }
+    }
+    stage('result'){
+      steps{
+        sh 'ls -l'
       }
     }
   }
